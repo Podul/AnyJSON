@@ -47,6 +47,17 @@ extension AnyJSON {
             default: return AnyJSON(value: .null)
         }
     }
+    
+    public subscript(_ index: Int) -> Self {
+        switch _value {
+            case .array(let array):
+                if array.count > index {
+                    return AnyJSON(value: array[index])
+                }
+                return AnyJSON(value: .null)
+            default: return AnyJSON(value: .null)
+        }
+    }
 }
 
 // MARK: - Value
@@ -125,7 +136,7 @@ extension AnyJSON {
         }
     }
     
-    public var anyValue: Any? {
+    public var value: Any? {
         _value.anyValue
     }
 }

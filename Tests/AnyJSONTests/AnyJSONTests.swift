@@ -8,6 +8,8 @@ final class AnyJSONTests: XCTestCase {
         
         XCTAssertTrue(value.sites.id.intValue == 1)
         XCTAssertTrue(value.sites.name.stringValue == "菜鸟教程")
+        XCTAssertTrue(value["sites"]["name"].stringValue == "菜鸟教程")
+        XCTAssertNil(value.sites.address[0].province.value)
     }
     
     func testJSON2() throws {
